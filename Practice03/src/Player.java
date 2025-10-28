@@ -28,7 +28,7 @@ public class Player extends GameCharacter{
         }
     }
     
-    // オーバーライド //@Override書くのを推奨※ポリモフィズム対策
+    // オーバーライド //@Override書くのを推奨※ポリモーフィズム対策
     @Override 
     public void DisplayStatus() {
         super.DisplayStatus(); // 親クラスのdisplayStatsを呼び出す
@@ -38,14 +38,14 @@ public class Player extends GameCharacter{
     }
     
     // オーバーロード 攻撃メソッド1: 特定の武器で攻撃
-    public void attack(GameCharacter target, String specificWeapon) {
+    public void PlayerAttack(GameCharacter target, String specificWeapon) {
         System.out.println(specificWeapon + "で攻撃！");
         int bonusDamage = 5; // 特定の武器による追加ダメージ
         target.TakeDamage(GetAttack() + bonusDamage);
     }
 
     // オーバーロードされた攻撃メソッド2: 魔法攻撃 (引数の型が異なる)
-    public void attack(GameCharacter target, int magicPower, String spellName) {
+    public void PlayerAttack(GameCharacter target, int magicPower, String spellName) {
         System.out.println("魔法攻撃" + spellName + "！");
         target.TakeDamage(magicPower);
     }
