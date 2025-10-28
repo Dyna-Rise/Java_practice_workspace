@@ -32,7 +32,24 @@ public class GameCharacter {
 	
 	//被ダメージメソッド
 	public void TakeDamage(int attack) {
+		//範囲を絞った値(最低0～防御力と相殺した攻撃力) clampメソッド相当
+		int damage = Math.max(0, (attack - defense));
+		currentHealth -= damage; //リアルタイム体力からダメージだけ減算
+		System.out.println(damage + "のダメージ!(残りHP：" + currentHealth + ")");
 		
+		//もし体力が全部なくなったら
+		if(currentHealth <= 0) {
+			System.out.println(name + "は倒れました！");
+		}
 	}
+	
+	//カプセル化の一種（ゲッターメソッド）
+	public String GetName() {return name;}
+	public int GetHealth() {return health;}
+	public int GetAttack() {return attack;}
+	public int GetDefense() {return defense;}
+	public int GetCurrentHealth() {return currentHealth;}
+	public boolean isAlive() {return (currentHealth > 0);} //死亡したかどうかの判定
+	
 
 }
