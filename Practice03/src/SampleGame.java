@@ -36,5 +36,41 @@ public class SampleGame {
 		}
 		
 		System.out.println();
+		
+		
+		
+		
+		System.out.println("--- 次の戦闘！ ---");
+
+		Dragon dragon = new Dragon();
+		dragon.DisplayStatus(); // ドラゴンでオーバーライドされたdisplayStatsを呼び出し
+		
+		System.out.println();
+		System.out.println("--- 戦闘開始！ ---");
+
+		System.out.println("\n==" + hero.GetName() + " vs " + dragon.GetName() + "==");
+		while (hero.isAlive() && dragon.isAlive()) {
+			// 勇者 vs ドラゴン
+			if (hero.isAlive()) {
+				System.out.println();
+
+				hero.PlayerAttack(dragon, "光の剣"); // オーバーロードされた特定の武器による攻撃
+				if (dragon.isAlive()) {
+					hero.PlayerAttack(dragon, 30, "ファイアボール"); // オーバーロードされた魔法攻撃
+				}
+
+				if (dragon.isAlive()) {
+					dragon.BreathAttack(hero); // ドラゴン固有の強力な攻撃
+				}
+
+				if (!dragon.isAlive()) {
+					hero.GainExperience(dragon.GetRewardExp());
+				}
+			}
+		}
+
+		System.out.println("\n--- 戦闘終了 ---");
+
+		hero.DisplayStatus(); // 最終的な勇者のステータス
 	}
 }
