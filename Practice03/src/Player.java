@@ -6,7 +6,7 @@ public class Player extends GameCharacter{
 	String weapon; //所持武器
 
 	//プレイヤーのコンストラクタ
-	public Player(String name,int health,int attack,int defense,String weapon) {
+	public Player(String name,int health,int attack,int defense,int level,String weapon) {
 		super(name, health, attack, defense); //親クラスのコンストラクタを利用
  		level = 1; //初期レベルは1
 		this.weapon = weapon; //引数の情報を変数に代入
